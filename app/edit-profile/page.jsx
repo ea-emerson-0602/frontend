@@ -4,21 +4,22 @@ import api from "@/lib/api";
 import { useRouter } from "next/navigation";
 
 export default function EditProfilePage() {
-  const url = process.env.NEXT_PUBLIC_URL
+  const url = process.env.NEXT_PUBLIC_URL;
   const router = useRouter();
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [userData, setUserData] = useState(null);
+
   const [formData, setFormData] = useState({
     username: "",
     full_name: "",
     gender: "",
     profile_picture: null,
   });
-  const [, ] = useState({
+  const [,] = useState({
     new_password: "",
     confirm_password: "",
     otp: "",
   });
-  const [, ] = useState(false);
+  const [,] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -64,7 +65,7 @@ export default function EditProfilePage() {
         },
       });
 
-      console.log(response)
+      console.log(response);
 
       setSuccess("Profile updated successfully!");
       router.refresh();
@@ -151,15 +152,15 @@ export default function EditProfilePage() {
         </form>
 
         <button
-        onClick={() => {
-          // localStorage.removeItem("accessToken");
-          // localStorage.removeItem("refreshToken");
-          router.push("/reset-password");
-        }}
-        className="text-blue-600 hover:text-blue-500"
-      >
-        Change Password
-      </button>
+          onClick={() => {
+            // localStorage.removeItem("accessToken");
+            // localStorage.removeItem("refreshToken");
+            router.push("/reset-password");
+          }}
+          className="text-blue-600 hover:text-blue-500"
+        >
+          Change Password
+        </button>
 
         {error && (
           <div className="mt-4 p-3 text-red-500 bg-red-50 rounded">{error}</div>
