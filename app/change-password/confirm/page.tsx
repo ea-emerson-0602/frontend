@@ -1,9 +1,10 @@
 // app/reset-password/confirm/page.tsx
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+// import { Suspense } from 'react';
 
-export default function ResetPasswordConfirmPage() {
+function MyComponent() {
   const url = process.env.NEXT_PUBLIC_API_URL
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
@@ -58,6 +59,7 @@ export default function ResetPasswordConfirmPage() {
   };
 
   return (
+    
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
@@ -131,5 +133,13 @@ export default function ResetPasswordConfirmPage() {
         </button>
       </form>
     </div>
+  );
+}
+
+export default function ResetPasswordConfirmPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MyComponent />
+    </Suspense>
   );
 }
