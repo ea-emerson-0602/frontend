@@ -4,13 +4,9 @@ import api from "@/lib/api";
 import Link from "next/link";
 import DeleteModal from "./DeleteModal";
 
-export default function ExpenseItem({
-  expense,
-  onUpdate,
-}: {
-  expense: any;
-  onUpdate: () => void;
-}) {
+export default function ExpenseItem({ expense, onUpdate }) {
+  // component logic goes here
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleDelete = async () => {

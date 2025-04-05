@@ -1,7 +1,7 @@
 // app/categories/page.tsx
 "use client";
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import api from '@/lib/api';
 
 interface Category {
@@ -15,7 +15,7 @@ export default function CategoriesPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [newCategory, setNewCategory] = useState<Partial<Category>>({});
   const [editingId, setEditingId] = useState<number | null>(null);
-  const router = useRouter();
+  // const router = useRouter();
 
   const fetchCategories = async () => {
     const response = await api.get('/categories/');

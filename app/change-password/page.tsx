@@ -1,8 +1,8 @@
 // app/reset-password/page.tsx
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+// import { useRouter } from "next/navigation";
+// import Link from "next/link";
 import api from "@/lib/api";
 
 interface User {
@@ -10,11 +10,11 @@ interface User {
 }
 export default function UpdatePasswordPage() {
   const url = process.env.NEXT_PUBLIC_URL
-  const [email, setEmail] = useState("");
+  const [email, ] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const router = useRouter();
+  // const router = useRouter();
 
 
   const [user, setUser] = useState<User | null>(null);

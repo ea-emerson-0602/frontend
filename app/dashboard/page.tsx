@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import api from "@/lib/api";
 import Link from "next/link";
+import Image from "next/image";
 
 interface User {
   username: string;
@@ -12,7 +13,7 @@ interface User {
 }
 
 export default function DashboardPage() {
-  const url = process.env.NEXT_PUBLIC_URL
+  const url = process.env.NEXT_PUBLIC_URL;
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -36,10 +37,14 @@ export default function DashboardPage() {
         <div className="flex items-center gap-6 mb-8">
           <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
             {user?.profile_picture ? (
-              <img
+              <Image
                 src={user.profile_picture}
                 alt="Profile"
                 className="w-full h-full object-cover"
+                width={500}
+                height={500}
+                blurDataURL="data:..."
+                placeholder="blur"
               />
             ) : (
               <span className="text-2xl text-gray-600">

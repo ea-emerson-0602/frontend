@@ -10,7 +10,7 @@ const CATEGORY_OPTIONS = [
   "Housing",
   "Entertainment",
   "Other",
-] as const;
+];
 
 export default function EditExpensePage() {
   const router = useRouter();
@@ -44,7 +44,7 @@ export default function EditExpensePage() {
     if (params.id) fetchExpense();
   }, [params.id]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
@@ -58,7 +58,7 @@ export default function EditExpensePage() {
       }
       if (
         !CATEGORY_OPTIONS.includes(
-          formData.category as (typeof CATEGORY_OPTIONS)[number]
+          formData.category[number]
         )
       ) {
         throw new Error("Please select a valid category");
@@ -77,7 +77,7 @@ export default function EditExpensePage() {
         router.push("/expenses");
         router.refresh(); // Force cache refresh
       }
-    } catch (err: any) {
+    } catch (err) {
       const errorMessage =
         err.response?.data?.detail ||
         err.response?.data?.message ||

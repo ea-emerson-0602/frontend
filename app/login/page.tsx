@@ -45,6 +45,7 @@ export default function LoginPage() {
       }
     } catch (err) {
       setError('Network error. Please try again.');
+      console.log(err)
     }
   };
   

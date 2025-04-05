@@ -9,13 +9,12 @@ const CATEGORIES = [
   "Rent", // Changed from Housing to match backend
   "Entertainment",
   "Other",
-] as const;
+] ;
 
-export default function AddExpenseForm({
-  onExpenseAdded,
-}: {
-  onExpenseAdded: () => void;
-}) {
+export default function AddExpenseForm({ onExpenseAdded }) {
+  // component logic goes here
+
+
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
@@ -23,7 +22,7 @@ export default function AddExpenseForm({
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -53,7 +52,7 @@ export default function AddExpenseForm({
         setDescription("");
         setDate("");
       }
-    } catch (err: any) {
+    } catch (err) {
       const errorMessage =
         err.response?.data?.detail ||
         err.response?.data?.category?.[0] || // Handle category errors

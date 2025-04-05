@@ -2,14 +2,6 @@
 import { useState, useEffect } from "react";
 import api from "@/lib/api";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
-
-interface UserData {
-  username: string;
-  full_name: string;
-  gender: string;
-  profile_picture?: string;
-}
 
 export default function EditProfilePage() {
   const url = process.env.NEXT_PUBLIC_URL
@@ -19,14 +11,14 @@ export default function EditProfilePage() {
     username: "",
     full_name: "",
     gender: "",
-    profile_picture: null as File | null,
+    profile_picture: null,
   });
-  const [passwordData, setPasswordData] = useState({
+  const [, ] = useState({
     new_password: "",
     confirm_password: "",
     otp: "",
   });
-  const [otpSent, setOtpSent] = useState(false);
+  const [, ] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -42,14 +34,14 @@ export default function EditProfilePage() {
           gender: response.data.gender,
           profile_picture: null,
         });
-      } catch (err) {
+      } catch (error) {
         setError("Failed to load user data");
       }
     };
     fetchUserData();
   }, []);
 
-  const handleProfileUpdate = async (e: React.FormEvent) => {
+  const handleProfileUpdate = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
@@ -66,15 +58,17 @@ export default function EditProfilePage() {
         form.append("profile_picture", formData.profile_picture);
       }
 
-      const response = await api.patch("http://localhost:8000/auth/user/", form, {
+      const response = await api.patch(`${url}/auth/user/`, form, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
+      console.log(response)
+
       setSuccess("Profile updated successfully!");
       router.refresh();
-    } catch (err: any) {
+    } catch (err) {
       setError(err.response?.data?.message || "Failed to update profile");
     }
   };

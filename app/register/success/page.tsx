@@ -41,7 +41,7 @@ export default function RegistrationSuccess() {
       <div className="bg-white p-8 rounded-lg shadow-md max-w-md text-center">
         <h1 className="text-2xl font-bold mb-4 text-green-600">Registration Successful!</h1>
         <p className="mb-4">
-          We've sent a confirmation email to {storedEmail}. Please check your inbox.
+          We&apos;ve sent a confirmation email to {storedEmail}. Please check your inbox.
         </p>
         
         <button
